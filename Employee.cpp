@@ -1,5 +1,4 @@
 
-
 #include <iostream>
 #include <bits\stdc++.h>
 
@@ -23,12 +22,15 @@ struct employee{
     double salary;
 };
 
-    employee emp[100];
-    int num,n;
-    void choices();
-
+employee emp[100];
+int val;
 
 void data(){
+
+    cout << "------------ Data Entry ----------- " << endl << endl;
+    int size;
+    cout<<"Enter the numbers of Employee you want to hire : ";
+    cin>>size;
 
     for (int i = 0; i < size; i++){
 
@@ -49,57 +51,83 @@ void data(){
 
         cout << "Enter Expected salary:";
         cin >> emp[i].salary;
-        
-        cout << endl<< endl;
     }
 
-
-
+    cout << endl<< endl;
+    A :
+        cout<<"You want to continue ? (y/n)"<<endl;
+        char c;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin>>c;
+        if(c == 'y') data();
+        else if(c == 'n'){
+            cout<<endl<<endl;
+            choices();
+        } 
+        else {
+            cout<<"Invalid choice!\n";
+            goto A;
+        }
 
 }
 
 void printData(){
     cout << "-------------- All data List ------------" << endl<< endl;
     int size;
-    cout<<"Enter the numbers of Employee you want to hire : ";
+    cout<<"Enter number of employe's data to be display : ";
     cin>>size;
 
-    for (int i = 0; i < size; i++){
-        cout << "NAME :  " << emp[i].name << endl;
+    for (int i = 0; i < size || val; i++){
+        cout << "NAME :  " << emp[i].name << endl<< endl;
 
-        cout << "AGE :  " << emp[i].age << endl;
+        cout << "AGE :  " << emp[i].age << endl<< endl;
 
-        cout << "10th MARKS :  " << emp[i].marksX << endl;
+        cout << "10th MARKS :  " << emp[i].marksX << endl<< endl;
 
-        cout << "12th MARKS :  " << emp[i].marksXII << endl;
+        cout << "12th MARKS :  " << emp[i].marksXII << endl<< endl;
 
-        cout << "GPA :  " << emp[i].GPA << endl;
+        cout << "GPA :  " << emp[i].GPA << endl<< endl;
 
         cout << "SALARY :  " << emp[i].salary << endl<< endl;
     }
-
+    A :
+        cout<<"You want to continue ? (y/n)"<<endl;
+        char c;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin>>c;
+        if(c == 'y') printData();
+        else if(c == 'n'){
+            cout<<endl<<endl;
+            choices();
+        } 
+        else {
+            cout<<"Invalid choice!\n";
+            goto A;
+        }
 
 }
 
 void selectedEmp(){
     cout << "------------- Selected Candidated List -------------" << endl<< endl;
     int size;
-    cout<<"Enter the numbers of Employee you want to hire : ";
+    cout<<"Enter the numbers of selected employe you want to check : ";
     cin>>size;
 
     for (int i = 0; i < size; i++){
         if (emp[i].age >= 18 && emp[i].age <= 60 && emp[i].marksX >= 60 && emp[i].marksX <= 100 && emp[i].marksXII >= 60 && emp[i].marksXII <= 100 && emp[i].GPA >= 6 && emp[i].GPA <= 10 && emp[i].salary <= 10000000)
         {
 
-            cout << "NAME :  " << emp[i].name << endl;
+            cout << "NAME :  " << emp[i].name << endl<< endl;
 
-            cout << "AGE :  " << emp[i].age << endl;
+            cout << "AGE :  " << emp[i].age << endl<< endl;
 
-            cout << "10th MARKS :  " << emp[i].marksX << endl;
+            cout << "10th MARKS :  " << emp[i].marksX << endl<< endl;
 
-            cout << "12th MARKS :  " << emp[i].marksXII << endl;
+            cout << "12th MARKS :  " << emp[i].marksXII << endl<< endl;
 
-            cout << "GPA :  " << emp[i].GPA << endl;
+            cout << "GPA :  " << emp[i].GPA << endl<< endl;
 
             cout << "SALARY :  " << emp[i].salary << endl<< endl;
         }
@@ -108,17 +136,65 @@ void selectedEmp(){
             selectedEmp();
         }
     }
+    A :
+        cout<<"You want to continue ? (y/n)"<<endl;
+        char c;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin>>c;
+        if(c == 'y') selectedEmp();
+        else if(c == 'n'){
+            cout<<endl<<endl;
+            choices();
+        } 
+        else {
+            cout<<"Invalid choice!\n";
+            goto A;
+        }
+}
 
+void choices(){
+
+    int n , num;
+    
+    cout << "---------Employee Hiring & Management----------" << endl<< endl;
+    cout << "------ Press 1 for Data entry ------ " << endl;
+    cout << "------ Press 2 data printing ------ " << endl;
+    cout << "------ Press 3 for selected Candidate ------ " << endl;
+    cout << "---------- Press 0 to EXIT---------- " << endl;
+
+    cin>>num;
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    if(num > 3) {
+        cout<< "Invalid choice!"<<endl;
+        choices();
+    }
+
+
+    switch(num) {
+        case 0 :
+                break;
+        case 1 : 
+                data();
+                break;
+        case 2 : 
+                printData();
+                break;
+        case 3 : 
+                selectedEmp();
+                break;
+        default : 
+                cout<<"Wrong choice...please select again\n";
+                choices();
+    }
 
 }
 
 int main()
-{   
-    cout << "---------Employee Hiring & Management----------" << endl<< endl;
-    cout<<"Enter the numbers of Employee you want to hire : ";
-    cin>>n;
-
+{
 
     choices();
     return 0;
 }
+
