@@ -1,4 +1,5 @@
 
+
 #include <iostream>
 #include <bits\stdc++.h>
 
@@ -16,13 +17,14 @@ struct employee{
     double salary;
 };
 
-employee emp[100];
-int val;
+    employee emp[100];
+    int num,n;
+    void choices();
+
 
 void data(int size){
 
-    cout << "------------ Data Entry ----------- " << endl
-         << endl;
+    cout << "------------ Data Entry ----------- " << endl<< endl;
 
     for (int i = 0; i < size; i++){
 
@@ -43,10 +45,11 @@ void data(int size){
 
         cout << "Enter Expected salary:";
         cin >> emp[i].salary;
+        
+        cout << endl<< endl;
     }
 
-    cout << endl<< endl;
-    // choices();
+    choices();
 
 
 }
@@ -54,20 +57,21 @@ void data(int size){
 void printData(int size){
     cout << "-------------- All data List ------------" << endl<< endl;
 
-    for (int i = 0; i < size || val; i++){
-        cout << "NAME :  " << emp[i].name << endl<< endl;
+    for (int i = 0; i < size; i++){
+        cout << "NAME :  " << emp[i].name << endl;
 
-        cout << "AGE :  " << emp[i].age << endl<< endl;
+        cout << "AGE :  " << emp[i].age << endl;
 
-        cout << "10th MARKS :  " << emp[i].marksX << endl<< endl;
+        cout << "10th MARKS :  " << emp[i].marksX << endl;
 
-        cout << "12th MARKS :  " << emp[i].marksXII << endl<< endl;
+        cout << "12th MARKS :  " << emp[i].marksXII << endl;
 
-        cout << "GPA :  " << emp[i].GPA << endl<< endl;
+        cout << "GPA :  " << emp[i].GPA << endl;
 
         cout << "SALARY :  " << emp[i].salary << endl<< endl;
     }
-    // choices();
+    cout<<"Data saved"<<endl;
+    choices();
 
 }
 
@@ -78,35 +82,34 @@ void selectedEmp(int size){
         if (emp[i].age >= 18 && emp[i].age <= 60 && emp[i].marksX >= 60 && emp[i].marksX <= 100 && emp[i].marksXII >= 60 && emp[i].marksXII <= 100 && emp[i].GPA >= 6 && emp[i].GPA <= 10 && emp[i].salary <= 10000000)
         {
 
-            cout << "NAME :  " << emp[i].name << endl<< endl;
+            cout << "NAME :  " << emp[i].name << endl;
 
-            cout << "AGE :  " << emp[i].age << endl<< endl;
+            cout << "AGE :  " << emp[i].age << endl;
 
-            cout << "10th MARKS :  " << emp[i].marksX << endl<< endl;
+            cout << "10th MARKS :  " << emp[i].marksX << endl;
 
-            cout << "12th MARKS :  " << emp[i].marksXII << endl<< endl;
+            cout << "12th MARKS :  " << emp[i].marksXII << endl;
 
-            cout << "GPA :  " << emp[i].GPA << endl<< endl;
+            cout << "GPA :  " << emp[i].GPA << endl;
 
             cout << "SALARY :  " << emp[i].salary << endl<< endl;
         }
     }
-    // choices();
+    choices();
 }
 
 void choices(){
 
-    int n,num;
 
-        cout << "---------Employee Hiring & Management----------" << endl<< endl;
         cout << "------ Press 1 for Data entry ------ " << endl;
         cout << "------ Press 2 data printing ------ " << endl;
         cout << "------ Press 3 for selected Candidate ------ " << endl;
+        cout<<"Enter your choice:- ";
+
         entry:
             cin>>num;
-        cout<<"Enter the numbers of Employee you want to hire : ";
-        cin>>n;
-
+        
+        cout<<endl;
         if(num == 1){
             data(n);
         }
@@ -125,7 +128,11 @@ void choices(){
 }
 
 int main()
-{
+{   
+    cout << "---------Employee Hiring & Management----------" << endl<< endl;
+    cout<<"Enter the numbers of Employee you want to hire : ";
+    cin>>n;
+
 
     choices();
     return 0;
