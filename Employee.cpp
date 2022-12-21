@@ -5,6 +5,12 @@
 
 using namespace std;
 
+void choices();
+void data();
+void printData();
+void selectedEmp();
+
+
 // #define n 100;
 
 struct employee{
@@ -22,9 +28,7 @@ struct employee{
     void choices();
 
 
-void data(int size){
-
-    cout << "------------ Data Entry ----------- " << endl<< endl;
+void data(){
 
     for (int i = 0; i < size; i++){
 
@@ -49,13 +53,16 @@ void data(int size){
         cout << endl<< endl;
     }
 
-    choices();
+
 
 
 }
 
-void printData(int size){
+void printData(){
     cout << "-------------- All data List ------------" << endl<< endl;
+    int size;
+    cout<<"Enter the numbers of Employee you want to hire : ";
+    cin>>size;
 
     for (int i = 0; i < size; i++){
         cout << "NAME :  " << emp[i].name << endl;
@@ -70,13 +77,15 @@ void printData(int size){
 
         cout << "SALARY :  " << emp[i].salary << endl<< endl;
     }
-    cout<<"Data saved"<<endl;
-    choices();
+
 
 }
 
-void selectedEmp(int size){
+void selectedEmp(){
     cout << "------------- Selected Candidated List -------------" << endl<< endl;
+    int size;
+    cout<<"Enter the numbers of Employee you want to hire : ";
+    cin>>size;
 
     for (int i = 0; i < size; i++){
         if (emp[i].age >= 18 && emp[i].age <= 60 && emp[i].marksX >= 60 && emp[i].marksX <= 100 && emp[i].marksXII >= 60 && emp[i].marksXII <= 100 && emp[i].GPA >= 6 && emp[i].GPA <= 10 && emp[i].salary <= 10000000)
@@ -94,36 +103,12 @@ void selectedEmp(int size){
 
             cout << "SALARY :  " << emp[i].salary << endl<< endl;
         }
+        else {
+            cout<<"Enter valid parameters.\n";
+            selectedEmp();
+        }
     }
-    choices();
-}
 
-void choices(){
-
-
-        cout << "------ Press 1 for Data entry ------ " << endl;
-        cout << "------ Press 2 data printing ------ " << endl;
-        cout << "------ Press 3 for selected Candidate ------ " << endl;
-        cout<<"Enter your choice:- ";
-
-        entry:
-            cin>>num;
-        
-        cout<<endl;
-        if(num == 1){
-            data(n);
-        }
-        else if(num ==2){
-            printData(n);
-        }
-        else if(num ==3){
-            selectedEmp(n);
-        }
-        else if(num != 1 ||2 ||3 ){
-            cout<<"Wrong choice Re-Enter your choice: ";
-            goto entry;
-        }
-        else return;
 
 }
 
